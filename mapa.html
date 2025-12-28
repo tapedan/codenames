@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Grid Aleatório</title>
+
+<style>
+  body {
+    margin: 0;
+    background: #4b3a22;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 70px);
+    gap: 14px;
+  }
+
+  .square {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+    background: #e6e6e6;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="grid" id="grid"></div>
+
+<script>
+  const grid = document.getElementById("grid");
+
+  // 🎨 cores
+  const BEIGE = "#d8c8a0";
+  const RED   = "#d64545";
+  const BLUE  = "#4a90e2";
+
+  // 🧠 distribuição fixa
+  let colors = [
+    ...Array(4).fill(BEIGE),
+    ...Array(6).fill(RED),
+    ...Array(6).fill(BLUE)
+  ];
+
+  // 🔀 embaralhar
+  colors.sort(() => Math.random() - 0.5);
+
+  // 🟦 criar grid
+  colors.forEach(color => {
+    const square = document.createElement("div");
+    square.className = "square";
+    square.style.background = color;
+    grid.appendChild(square);
+  });
+</script>
+
+</body>
+</html>
